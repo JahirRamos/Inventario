@@ -32,15 +32,26 @@ void ingresarproducto(char producto[][30], float precio[10], int cant[], int con
             producto[contp][len - 1] = '\0';
         }
 
-        do
-        {
+        do {
             printf("Ingrese el precio del producto %d: ", contp + 1);
-            scanf("%f", &precio[contp]);
-            if (precio[contp] < 0)
-            {
-                printf("El precio no puede ser negativo. Intente de nuevo.\n");
+            
+            if (scanf("%f", &precio[contp]) != 1) { 
+                printf("Entrada invalida. Ingrese un numero valido.\n");
+                while (getchar() != '\n'); 
+                continue;
             }
-        } while (precio[contp] < 0);
+            
+            if (precio[contp] < 0) {  
+                printf("El precio no puede ser negativo. Intente de nuevo.\n");
+                while (getchar() != '\n'); 
+                continue;
+            }
+    
+            while (getchar() != '\n'); 
+            break;
+    
+        } while (1);
+    
     }
     else
     {
